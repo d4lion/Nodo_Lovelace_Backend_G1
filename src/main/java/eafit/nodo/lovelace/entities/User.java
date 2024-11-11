@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -27,7 +27,7 @@ public class User {
 
     @Column(length = 100)
     private String email;
-    private Date register_at;
+    private LocalDate register_at;
 
     @OneToMany
     @JoinColumn(name = "user_suggestion_id")
@@ -36,5 +36,4 @@ public class User {
     @OneToMany
     @JoinColumn(name = "user_preference_id")
     private List<Preferences> preferences;
-
 }

@@ -1,0 +1,16 @@
+package eafit.nodo.lovelace.services;
+
+import eafit.nodo.lovelace.dtos.UserDTO;
+import eafit.nodo.lovelace.dtos.UserDataDto;
+import eafit.nodo.lovelace.utils.ApiResponse;
+
+
+import java.util.List;
+
+public interface UserService {
+    List<UserDTO> findAll();
+
+    ApiResponse<UserDTO> create(UserDTO userDTO);
+
+    ApiResponse<UserDataDto> getUserById(Long id);
+}

@@ -27,7 +27,11 @@ public class Suggestion {
     private int age;
 
     @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Countries country;
+    @JoinColumn(name = "america_country_id")
+    private Countries america_country;
+
+    @ManyToOne
+    @JoinColumn(name = "europa_country_id")
+    private Countries europa_country;
 
 }
