@@ -1,7 +1,10 @@
 package eafit.nodo.lovelace.services;
 
 import eafit.nodo.lovelace.dtos.UserDTO;
+import eafit.nodo.lovelace.dtos.UserDataDto;
 import eafit.nodo.lovelace.entities.User;
+import eafit.nodo.lovelace.mappers.UserDataMapper;
+import eafit.nodo.lovelace.mappers.UserMapper;
 import eafit.nodo.lovelace.repositories.UserRepository;
 import eafit.nodo.lovelace.utils.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +21,11 @@ public class UserServiceImpl implements UserService {
     UserRepository repository;
 
     @Override
-    public List<User> findAll() {
-        return repository.findAll();
+    public List<UserDTO> findAll() {
+
+        List<User> users = repository.findAll();
+
+        return users.stream().map(UserMapper.mapper::userToUserDTO).toList();
     }
 
     @Override
@@ -49,11 +55,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ApiResponse<User> getUserById(Long id) {
+    public ApiResponse<UserDataDto> getUserById(Long id) {
 
         Optional<User> reponse = repository.findById(id);
 
-        return reponse.map(user -> new ApiResponse<>(user, null))
+        return reponse.map(user -> new ApiResponse<>(UserDataMapper.mapper.userToUserDataDTO(user), null))
                 .orElseGet(() -> new ApiResponse<>(null, "User not found"));
 
     }
