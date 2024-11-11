@@ -1,15 +1,15 @@
 package eafit.nodo.lovelace.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.lang.annotation.Target;
+
 import java.util.Date;
+import java.util.List;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -29,7 +29,12 @@ public class User {
     private String email;
     private Date register_at;
 
-    @ManyToOne
-    @JoinColumn(name = "suggestions_history_id")
-    private SuggestionsHistory suggestionsHistory;
+    @OneToMany
+    @JoinColumn(name = "user_suggestion_id")
+    private List<Suggestion> suggestions;
+
+    @OneToMany
+    @JoinColumn(name = "user_preference_id")
+    private List<Preferences> preferences;
+
 }

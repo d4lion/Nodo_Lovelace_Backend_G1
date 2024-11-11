@@ -2,24 +2,21 @@ package eafit.nodo.lovelace.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.UuidGenerator;
 
-@Data
+import java.util.UUID;
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
 public class Preferences {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @UuidGenerator
+    private UUID id;
 
     @Column(length = 40)
     private String climate;
