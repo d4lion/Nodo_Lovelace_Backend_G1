@@ -13,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1/users")
+@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -41,9 +42,11 @@ public class UserController {
 
         // Si se intenta crear un usuario que ya existe
         if (creationResponse.getError() != null) {
-            return ResponseEntity.badRequest().body(Map.of("error", "User already exists"));
+            // Se retorna un 409 Conflict para indicar que el recurso ya existe
+            return ResponseEntity.status(409).body(Map.of("error", "User already exists"));
         }
 
-        return ResponseEntity.ok(creationResponse.getData());
+        // Se retorna un 201 Created con el usuario creado
+        return ResponseEntity.status(201).body(creationResponse.getData());
     }
 }
