@@ -10,6 +10,8 @@ import java.util.List;
 public interface UserService {
     List<UserDTO> findAll();
 
+    List<UserDataDto> findAllWithSuggestions();
+
     ApiResponse<UserDTO> create(UserDTO userDTO);
 
     ApiResponse<UserDataDto> getUserById(Long id);
