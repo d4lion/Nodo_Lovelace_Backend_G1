@@ -29,9 +29,9 @@ public class User {
     private String email;
     private LocalDate register_at;
 
-    @OneToMany
+    /*@OneToMany
     @JoinColumn(name = "user_suggestion_id")
-    private List<Suggestion> suggestions;
+    private List<Suggestion> suggestions;*/
 
     @OneToMany
     @JoinColumn(name = "user_preference_id")

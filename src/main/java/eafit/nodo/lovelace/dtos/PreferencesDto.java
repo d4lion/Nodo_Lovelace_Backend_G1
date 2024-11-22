@@ -12,6 +12,6 @@ public class PreferencesDto {
     String climate;
     String activity;
     String housing;
-    int duration;
+    String duration;
     int age;
 }

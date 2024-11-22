@@ -1,5 +1,6 @@
 package eafit.nodo.lovelace.dtos;
 
+import eafit.nodo.lovelace.entities.Suggestion;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -12,7 +13,7 @@ public class SuggestionDto {
     String climate;
     String activity;
     String housing;
-    int duration;
+    String duration;
     int age;
 
     CountryDto america_country;
