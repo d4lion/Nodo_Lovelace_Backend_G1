@@ -1,6 +1,5 @@
 package eafit.nodo.lovelace.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,7 +30,7 @@ public class User {
 
     @OneToMany
     @JoinColumn(name = "user_suggestion_id")
-    private List<Suggestion> suggestions;
+    private List<SuggestionHistory> suggestions;
 
     @OneToMany
     @JoinColumn(name = "user_preference_id")
