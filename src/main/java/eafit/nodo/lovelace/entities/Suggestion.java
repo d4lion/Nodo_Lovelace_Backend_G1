@@ -23,8 +23,10 @@ public class Suggestion {
     @Column(length = 40)
     private String housing;
 
-    private int duration;
-    private int age;
+    @Column(length = 40)
+    private String duration;
+
+    private String age;
 
     @ManyToOne
     @JoinColumn(name = "america_country_id")

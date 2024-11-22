@@ -27,6 +27,8 @@ public class Preferences {
     @Column(length = 40)
     private String housing;
 
-    private int duration;
+    @Column(length = 40)
+    private String duration;
+
     private int age;
 }
