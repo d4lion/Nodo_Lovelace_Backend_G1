@@ -29,6 +29,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserDataDto> findAllWithSuggestions() {
+
+        List<User> users = repository.findAll();
+
+        return users.stream().map(UserDataMapper.mapper::userToUserDataDTO).toList();
+    }
+
+    @Override
     public ApiResponse<UserDTO> create(UserDTO userDTO) {
 
         if (userDTO == null) {

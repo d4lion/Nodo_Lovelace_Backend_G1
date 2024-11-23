@@ -1,14 +1,11 @@
 package eafit.nodo.lovelace.controllers;
 
 import eafit.nodo.lovelace.dtos.UserDTO;
-import eafit.nodo.lovelace.entities.User;
 import eafit.nodo.lovelace.services.UserServiceImpl;
 import eafit.nodo.lovelace.utils.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -19,7 +16,12 @@ public class UserController {
     UserServiceImpl userService;
 
     @GetMapping
-    public ResponseEntity<List<UserDTO>> findAll() {
+    public ResponseEntity<Object> findAll(@RequestParam(name = "suggestions", required = false) boolean suggestions) {
+
+        if (suggestions) {
+            return ResponseEntity.ok(userService.findAllWithSuggestions());
+        }
+
         return ResponseEntity.ok(userService.findAll());
     }
 
@@ -28,7 +30,7 @@ public class UserController {
     public ResponseEntity<Object> getUserById(@PathVariable Long id) {
 
         if (userService.getUserById(id).getError() != null) {
-            return ResponseEntity.badRequest().body(Map.of("error", "User not found"));
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
         }
 
         return ResponseEntity.ok(userService.getUserById(id).getData());

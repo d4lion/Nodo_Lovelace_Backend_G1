@@ -10,12 +10,13 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Suggestion {
+public class SuggestionHistory {
     @Id
     private int id;
 
     @Column(length = 40)
     private String climate;
+
 
     @Column(length = 40)
     private String activity;
