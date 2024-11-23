@@ -3,9 +3,6 @@ package eafit.nodo.lovelace.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.UuidGenerator;
-
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -13,10 +10,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Preferences {
+public class Suggestions {
     @Id
-    @UuidGenerator
-    private UUID id;
+    private int id;
 
     @Column(length = 40)
     private String climate;
@@ -31,4 +27,12 @@ public class Preferences {
     private String duration;
 
     private String age;
+
+    @ManyToOne
+    @JoinColumn(name = "america_country_id")
+    private Countries america_country;
+
+    @ManyToOne
+    @JoinColumn(name = "europa_country_id")
+    private Countries europa_country;
 }

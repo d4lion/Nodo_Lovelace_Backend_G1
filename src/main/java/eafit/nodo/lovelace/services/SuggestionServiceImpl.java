@@ -1,6 +1,6 @@
 package eafit.nodo.lovelace.services;
 
-import eafit.nodo.lovelace.entities.SuggestionHistory;
+import eafit.nodo.lovelace.entities.Suggestions;
 import eafit.nodo.lovelace.repositories.SuggestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ public class SuggestionServiceImpl {
     @Autowired
     private SuggestionRepository suggestionRepository;
 
-    public List<SuggestionHistory> getSuggestionsByFilters(Map<String, String> suggestions) {
+    public List<Suggestions> getSuggestionsByFilters(Map<String, String> suggestions) {
         // Extraer filtros del JSON
         String climate = suggestions.get("climate");
         String activity = suggestions.get("activity");
