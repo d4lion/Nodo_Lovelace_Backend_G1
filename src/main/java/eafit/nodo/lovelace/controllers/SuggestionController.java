@@ -1,5 +1,7 @@
 package eafit.nodo.lovelace.controllers;
 
+import eafit.nodo.lovelace.dtos.SuggestionHistoryDto;
+import eafit.nodo.lovelace.entities.SuggestionHistory;
 import eafit.nodo.lovelace.entities.Suggestions;
 import eafit.nodo.lovelace.services.SuggestionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +18,8 @@ public class SuggestionController {
     private SuggestionServiceImpl suggestionService;
 
     @PostMapping("/filter")
-    public ResponseEntity<List<Suggestions>> getSuggestionsByUserInput(@RequestBody Map<String, String> filters) {
-        List<Suggestions> suggestions = suggestionService.getSuggestionsByFilters(filters);
-
-        if (suggestions.isEmpty()) {
-            return ResponseEntity.badRequest().body(null);
-        }
+    public ResponseEntity<Suggestions> getSuggestionsByUserInput(@RequestBody SuggestionHistoryDto filters) {
+        Suggestions suggestions = suggestionService.getSuggestionsByFilters(filters);
 
         return ResponseEntity.ok(suggestions);
     }
