@@ -17,7 +17,7 @@ public interface SuggestionRepository extends JpaRepository<eafit.nodo.lovelace.
             "(:housing IS NULL OR s.housing = :housing) AND " +
             "(:duration IS NULL OR s.duration = :duration) AND " +
             "(:age IS NULL OR CAST(s.age AS string) = :age)")
-    List<Suggestions> findByFilters(@Param("climate") String climate,
+    Suggestions findByFilters(@Param("climate") String climate,
                                     @Param("activity") String activity,
                                     @Param("housing") String housing,
                                     @Param("duration") String duration,

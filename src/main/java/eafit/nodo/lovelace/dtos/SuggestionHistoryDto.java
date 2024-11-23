@@ -7,14 +7,13 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class SuggestionDto {
+public class SuggestionHistoryDto {
+    Long user_id;
     String climate;
     String activity;
     String housing;
     String duration;
     String age;
-
-    CountryDto america_country;
-    CountryDto europa_country;
 }
