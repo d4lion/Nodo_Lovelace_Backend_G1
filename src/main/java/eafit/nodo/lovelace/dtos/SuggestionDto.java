@@ -1,6 +1,5 @@
 package eafit.nodo.lovelace.dtos;
 
-import eafit.nodo.lovelace.entities.Suggestion;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
