@@ -8,7 +8,8 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PreferencesDto {
+public class CreatePreferesDto {
+    Long user_id;
     String climate;
     String activity;
     String housing;

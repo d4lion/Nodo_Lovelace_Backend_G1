@@ -31,4 +31,8 @@ public class Preferences {
     private String duration;
 
     private String age;
+
+    @ManyToOne
+    @JoinColumn(name = "user_preference_id")
+    private User user;
 }
