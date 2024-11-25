@@ -10,6 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1/users")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
@@ -38,14 +39,15 @@ public class UserController {
 
     @PostMapping("/create")
     // Ideal de retorno --> ResponseEntity<ApiResponse<UserDTO>>
-    public ResponseEntity<Object> create(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<Object> create(@RequestBody UserDTO userDTO) throws InterruptedException {
         ApiResponse<UserDTO> creationResponse = userService.create(userDTO);
 
         // Si se intenta crear un usuario que ya existe
         if (creationResponse.getError() != null) {
-            return ResponseEntity.badRequest().body(Map.of("error", "User already exists"));
+            Thread.sleep(2000);
+            return ResponseEntity.status(202).body(Map.of("error", "User already exists"));
         }
-
+        Thread.sleep(2000);
         return ResponseEntity.ok(creationResponse.getData());
     }
 }
