@@ -3,6 +3,7 @@ package eafit.nodo.lovelace.controllers;
 import eafit.nodo.lovelace.dtos.SuggestionHistoryDto;
 import eafit.nodo.lovelace.entities.Suggestions;
 import eafit.nodo.lovelace.services.SuggestionServiceImpl;
+import eafit.nodo.lovelace.utils.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,14 @@ public class SuggestionController {
     private SuggestionServiceImpl suggestionService;
 
     @PostMapping("/filter")
-    public ResponseEntity<Suggestions> getSuggestionsByUserInput(@RequestBody SuggestionHistoryDto filters) {
+    public ResponseEntity<ApiResponse<Suggestions>> getSuggestionsByUserInput(@RequestBody SuggestionHistoryDto filters) {
         Suggestions suggestions = suggestionService.getSuggestionsByFilters(filters);
 
-        return ResponseEntity.ok(suggestions);
+        if (suggestions == null) {
+            return ResponseEntity.status(404)
+                    .body(new ApiResponse<>(null, "Suggestion not found"));
+        }
+
+        return ResponseEntity.ok(new ApiResponse<>(suggestions, null));
     }
 }
