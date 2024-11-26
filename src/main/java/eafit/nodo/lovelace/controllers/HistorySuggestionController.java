@@ -20,7 +20,7 @@ public class HistorySuggestionController {
     @GetMapping("/{id}")
     public ResponseEntity<Object> getSuggestionHistoryById(@PathVariable UUID id) {
 
-        if (suggestionHistoryServiceImpl.getSuggestionHistoryById(id) != null) {
+        if (suggestionHistoryServiceImpl.getSuggestionHistoryById(id).getData() == null) {
             return ResponseEntity.status(404).body(Map.of("error", "Suggestion no found"));
         }
 
