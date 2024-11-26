@@ -18,7 +18,8 @@ public class SuggestionServiceImpl {
     SuggestionHistoryServiceImpl suggestionHistoryServiceImpl;
 
     @Autowired
-    UserRepository userRepository;
+    PreferencesServiceImpl preferencesServiceImpl;
+
 
     public Suggestions getSuggestionsByFilters(SuggestionHistoryDto suggestions) {
 
@@ -32,7 +33,8 @@ public class SuggestionServiceImpl {
         Suggestions finalSuggestionResp = suggestionRepository.findByFilters(climate, activity, housing, duration, age);
 
         if(finalSuggestionResp != null) {
-            suggestionHistoryServiceImpl.insertSuggestion(finalSuggestionResp, id_user);
+            suggestionHistoryServiceImpl.insertSuggestion(finalSuggestionResp,id_user);
+            preferencesServiceImpl.insertPreferences(finalSuggestionResp, id_user);
         }
 
         return finalSuggestionResp;
