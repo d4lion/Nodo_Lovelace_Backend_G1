@@ -32,11 +32,9 @@ public class SuggestionServiceImpl {
 
         Suggestions finalSuggestionResp = suggestionRepository.findByFilters(climate, activity, housing, duration, age);
 
-        suggestionHistoryServiceImpl.insertSuggestion(finalSuggestionResp,id_user);
-        preferencesServiceImpl.insertPreferences(finalSuggestionResp, id_user);
-
         if(finalSuggestionResp != null) {
-            suggestionHistoryServiceImpl.insertSuggestion(finalSuggestionResp, id_user);
+            suggestionHistoryServiceImpl.insertSuggestion(finalSuggestionResp,id_user);
+            preferencesServiceImpl.insertPreferences(finalSuggestionResp, id_user);
         }
 
         return finalSuggestionResp;
