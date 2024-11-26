@@ -1,8 +1,8 @@
 package eafit.nodo.lovelace.services;
 
-import eafit.nodo.lovelace.dtos.CreatePreferesDto;
+import eafit.nodo.lovelace.entities.Suggestions;
 
 public interface PreferencesService {
-    CreatePreferesDto insertPreferences(CreatePreferesDto createPreferesDto);
+    void insertPreferences(Suggestions createPreferesDto, Long id_user);
 }
 

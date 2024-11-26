@@ -1,7 +1,7 @@
 package eafit.nodo.lovelace.services;
 
-import eafit.nodo.lovelace.dtos.CreatePreferesDto;
 import eafit.nodo.lovelace.entities.Preferences;
+import eafit.nodo.lovelace.entities.Suggestions;
 import eafit.nodo.lovelace.entities.User;
 import eafit.nodo.lovelace.repositories.PreferencesRepository;
 import eafit.nodo.lovelace.repositories.UserRepository;
@@ -18,12 +18,11 @@ public class PreferencesServiceImpl implements PreferencesService {
     UserRepository userRepository;
 
     @Override
-    public CreatePreferesDto insertPreferences(CreatePreferesDto createPreferesDto) {
+    public void insertPreferences(Suggestions createPreferesDto, Long id_user) {
 
         Preferences newPreferences = Preferences.builder().build();
 
-        User user = userRepository.findById(createPreferesDto.getUser_id())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepository.findById(id_user).get();
 
         newPreferences.setUser(user);
         newPreferences.setActivity(createPreferesDto.getActivity());
@@ -33,7 +32,5 @@ public class PreferencesServiceImpl implements PreferencesService {
         newPreferences.setHousing(createPreferesDto.getHousing());
 
         repository.save(newPreferences);
-
-        return createPreferesDto;
     }
 }
