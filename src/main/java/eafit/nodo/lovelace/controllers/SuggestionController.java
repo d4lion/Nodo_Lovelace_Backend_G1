@@ -17,14 +17,25 @@ public class SuggestionController {
     private SuggestionServiceImpl suggestionService;
 
     @PostMapping("/filter")
-    public ResponseEntity<ApiResponse<Suggestions>> getSuggestionsByUserInput(@RequestBody SuggestionHistoryDto filters) {
+    public ResponseEntity<Object> getSuggestionsByUserInput(@RequestBody SuggestionHistoryDto filters) {
         Suggestions suggestions = suggestionService.getSuggestionsByFilters(filters);
 
         if (suggestions == null) {
-            return ResponseEntity.status(404)
-                    .body(new ApiResponse<>(null, "Suggestion not found"));
+            System.out.println("Suggestion not found");
+
+            SuggestionHistoryDto defaultFilterConfig = new SuggestionHistoryDto();
+            defaultFilterConfig.setUser_id(filters.getUser_id());
+            defaultFilterConfig.setClimate("default");
+            defaultFilterConfig.setActivity("default");
+            defaultFilterConfig.setHousing("default");
+            defaultFilterConfig.setDuration("default");
+            defaultFilterConfig.setAge("default");
+
+            Suggestions suggestion = suggestionService.getSuggestionsByFilters(defaultFilterConfig);
+
+            return ResponseEntity.ok(suggestion);
         }
 
-        return ResponseEntity.ok(new ApiResponse<>(suggestions, null));
+        return ResponseEntity.ok(suggestions);
     }
 }
