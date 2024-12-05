@@ -13,4 +13,5 @@ import java.util.UUID;
 public interface SuggestionHistoryService {
     void insertSuggestion(Suggestions suggestionHistory, Long id_user);
     ApiResponse<SuggestionHistoryDto> getSuggestionHistoryById(UUID id);
+    void deleteSuggestion(UUID id);
 }

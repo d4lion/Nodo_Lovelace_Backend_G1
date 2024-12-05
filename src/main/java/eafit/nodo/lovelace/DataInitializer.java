@@ -42,8 +42,10 @@ public class DataInitializer implements CommandLineRunner {
         String CountriesDataSql = "INSERT INTO countries (id, city, continent, name, photos_url) VALUES " +
                 "(1, 'Playa del Carmen', 'América', 'México', 'https://lovelace-amadeus.s3.us-east-1.amazonaws.com/country_img/europa/mex_playa_del_carmen.jpg'), " +
                 "(2, 'Cartagena', 'América', 'Colombia', 'https://lovelace-amadeus.s3.us-east-1.amazonaws.com/country_img/america/col_cartagena.jpg'), " +
-                "(3, 'Rio de Janeiro', 'América', 'Brasil', 'https://lovelace-amadeus.s3.us-east-1.amazonaws.com/country_img/europa/br_rio_de_janeiro.jpg'), " +
-                "(4, 'Bariloche', 'América', 'Argentina', 'https://lovelace-amadeus.s3.us-east-1.amazonaws.com/country_img/europa/ar_bariloche.jpg'), " +
+                "(3, 'Rio de Janeiro', 'América', 'Brasil', 'https://lovelace-amadeus.s3.us-east-1.amazonaws" +
+                ".com/country_img/america/br_rio_de_janeiro.jpg'), " +
+                "(4, 'Bariloche', 'América', 'Argentina', 'https://lovelace-amadeus.s3.us-east-1.amazonaws" +
+                ".com/country_img/america/ar_bariloche.jpg'), " +
                 "(5, 'Cusco', 'América', 'Perú', 'https://lovelace-amadeus.s3.us-east-1.amazonaws" +
                 ".com/country_img/america/per_cusco.jpg'), " +
                 "(6, 'Banff', 'América', 'Canadá', 'https://lovelace-amadeus.s3.us-east-1.amazonaws" +

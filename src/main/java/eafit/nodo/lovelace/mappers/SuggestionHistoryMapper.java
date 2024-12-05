@@ -17,5 +17,6 @@ public interface SuggestionHistoryMapper {
     @Mapping(source = "europa_country", target = "europa_country")
     SuggestionHistoryDto suggestionToSuggestionDataDto(SuggestionHistory suggestionHistory);
 
-    CountryDto countryToCountryDto(Countries country);
+    @Mapping(target = "img", source = "photos_url")
+    CountryDto countryToCountryDTO(Countries country);
 }

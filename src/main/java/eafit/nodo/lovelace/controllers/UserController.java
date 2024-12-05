@@ -12,7 +12,6 @@ import java.util.Map;
 @RequestMapping("api/v1/users")
 @CrossOrigin(origins = "*")
 public class UserController {
-
     @Autowired
     UserServiceImpl userService;
 
@@ -44,10 +43,10 @@ public class UserController {
 
         // Si se intenta crear un usuario que ya existe
         if (creationResponse.getError() != null) {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             return ResponseEntity.status(202).body(Map.of("error", "User already exists"));
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         return ResponseEntity.ok(creationResponse.getData());
     }
 }

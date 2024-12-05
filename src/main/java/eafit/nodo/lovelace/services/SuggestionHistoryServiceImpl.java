@@ -26,6 +26,7 @@ public class SuggestionHistoryServiceImpl implements SuggestionHistoryService{
     UserRepository userRepository;
 
 
+
     @Override
     public void insertSuggestion(Suggestions suggestionHistory, Long id_user) {
 
@@ -52,5 +53,10 @@ public class SuggestionHistoryServiceImpl implements SuggestionHistoryService{
 
         return suggestionHistory.map(suggestionHistory1 -> new ApiResponse<>(SuggestionHistoryMapper.mapper.suggestionToSuggestionDataDto(suggestionHistory1), null))
                 .orElseGet(() -> new ApiResponse<>(null, "Suggestion not found"));
+    }
+
+    @Override
+    public void deleteSuggestion(UUID id) {
+        suggestionHistoryRepository.deleteById(id);
     }
 }
